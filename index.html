@@ -53,6 +53,12 @@
         align-items: flex-start;
     }
 
+    .custom-logo {
+        max-width: 240px;
+        height: auto;
+        display: block;
+    }
+
     .tagline {
         color: #666;
         font-size: 14px;
@@ -132,11 +138,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-    }
-
-    .beer {
-        font-size: 66px;
-        margin-bottom: 12px;
     }
 
     .server-card h2 {
@@ -275,16 +276,7 @@
 
     <header>
         <div class="logo-container">
-            <!-- SVG-логотип: белый фон, синяя рамка, герб и надпись ПЛПК -->
-            <svg width="240" height="110" viewBox="0 0 300 135" xmlns="http://www.w3.org/2000/svg">
-              <rect width="300" height="135" fill="#FFFFFF"/>
-              <!-- Синяя рамка (стиль ЛДПР, но белая середина) -->
-              <rect x="6" y="6" width="288" height="123" fill="none" stroke="#0040aa" stroke-width="8"/>
-              <!-- Текст ПЛПК -->
-              <text x="150" y="55" font-family="'Impact', 'Arial Black', sans-serif" font-size="52" font-weight="900" fill="#0040aa" text-anchor="middle" letter-spacing="3">ПЛПК</text>
-              <text x="150" y="85" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#333333" text-anchor="middle">ПАРТИЯ ЛЮБИТЕЛЕЙ ПИВО КРАФТА</text>
-              <text x="150" y="108" font-family="Arial, sans-serif" font-size="11" fill="#666666" text-anchor="middle">СОЮЗ ЕДИНОМЫШЛЕННИКОВ · 2026</text>
-            </svg>
+            <img src="Снимок экрана 2026-09-04 213241.png" alt="ПЛПК РФ" class="custom-logo">
             <div class="tagline"><strong>* Фан-партия</strong></div>
         </div>
 
@@ -318,7 +310,9 @@
 
             <div class="side-title">Наш сервер</div>
             <div class="server-card">
-                <div class="beer">🍺</div>
+                <!-- Картинка logoserver.png вместо эмодзи пива -->
+                <img src="logoserver.png" alt="Пиво" style="max-width: 80px; height: auto; margin: 0 auto 12px; display: block;">
+                
                 <h2>PIVO CRAFT</h2>
                 <div>Игровой сервер · Minecraft 1.21.11</div>
                 <div class="ip">pivo.polit.games</div>
@@ -419,7 +413,10 @@
             <div class="section">
                 <h3>Команда партии</h3>
                 <div class="bullet">
-                    <strong>SMM-менеджер:</strong> Qeruni
+                    <strong>Спикер:</strong> Weruni
+                </div>
+                <div class="bullet">
+                    <strong>Участник:</strong> Qeruni
                 </div>
             </div>
 
