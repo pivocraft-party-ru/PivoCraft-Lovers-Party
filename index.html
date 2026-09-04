@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Партия Любителей Пиво Крафта</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background: #f4f4f4;
+        color: #222;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+    }
+
+    a { color: #0874ad; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar {
+        height: 34px;
+        background: #d8dde0;
+        border-bottom: 1px solid #aeb5b9;
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        gap: 18px;
+        font-weight: bold;
+        color: #4b5961;
+    }
+
+    .topbar a { color: #4b5961; }
+
+    .page {
+        max-width: 1580px;
+        margin: 0 auto;
+        background: #fff;
+        min-height: 100vh;
+    }
+
+    header {
+        min-height: 150px;
+        padding: 15px 20px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+    }
+
+    .logo {
+        font-size: 48px;
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -3px;
+        color: #2c9b45;
+        text-shadow: 2px 2px 0 #fff, 3px 3px 0 #8b5b25;
+    }
+
+    .logo span { color: #b07a22; }
+
+    .tagline {
+        color: #666;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .ad {
+        height: 116px;
+        flex: 1;
+        max-width: 930px;
+        background:
+            linear-gradient(135deg, rgba(90,54,12,.95), rgba(214,153,38,.9)),
+            repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255,255,255,.08) 8px, rgba(255,255,255,.08) 16px);
+        border: 1px solid #754d18;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        box-shadow: inset 0 0 0 2px rgba(255,255,255,.08);
+    }
+
+    .ad strong {
+        display: block;
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+
+    .ad small {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .userbar {
+        margin: 0 14px 20px;
+        height: 34px;
+        border: 1px solid #c6cbd0;
+        background: #eceff1;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        gap: 14px;
+    }
+
+    .userbar .right {
+        margin-left: auto;
+    }
+
+    .layout {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr) 300px;
+        gap: 8px;
+        padding: 0 14px 30px;
+    }
+
+    .side-title {
+        font-size: 19px;
+        font-weight: bold;
+        color: #3f474d;
+        border-bottom: 1px solid #c9ced1;
+        padding: 8px 5px;
+    }
+
+    .side-box {
+        border: 1px solid #d1d5d8;
+        background: #fafafa;
+        margin-bottom: 12px;
+        padding: 12px;
+    }
+
+    .server-card {
+        background: #182126;
+        color: white;
+        padding: 22px 14px;
+        text-align: center;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .beer {
+        font-size: 66px;
+        margin-bottom: 12px;
+    }
+
+    .server-card h2 {
+        margin: 0 0 12px;
+        font-size: 25px;
+    }
+
+    .ip {
+        background: #11171a;
+        border: 1px solid #555;
+        padding: 10px;
+        font-family: Consolas, monospace;
+        font-size: 17px;
+        color: #f1c45c;
+        margin-top: 8px;
+    }
+
+    .news h2 {
+        margin: 0 0 5px;
+        font-size: 22px;
+    }
+
+    .news-row {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        border-bottom: 1px solid #ddd;
+        min-height: 32px;
+        align-items: center;
+    }
+
+    .date {
+        background: #f1f1f1;
+        border: 1px solid #ccc;
+        margin: 3px;
+        padding: 3px;
+        text-align: center;
+        color: #68747c;
+        font-size: 12px;
+    }
+
+    .content-title {
+        background: #edf0f2;
+        border: 1px solid #d0d5d8;
+        color: #444;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 7px 14px;
+        margin-top: 12px;
+    }
+
+    .section {
+        border: 1px solid #d5d9dc;
+        border-top: 0;
+        background: #fafafa;
+        padding: 13px 16px 17px;
+    }
+
+    .section h3 {
+        color: #8c268f;
+        margin: 0 0 7px;
+        font-size: 21px;
+    }
+
+    .section p {
+        margin: 7px 0;
+        line-height: 1.5;
+    }
+
+    .principle {
+        padding: 10px 12px;
+        border-left: 4px solid #9c7b29;
+        background: #fff;
+        margin: 8px 0;
+    }
+
+    .principle strong {
+        color: #0874ad;
+    }
+
+    .bullet {
+        padding: 7px 0 7px 20px;
+        border-bottom: 1px solid #e2e2e2;
+        position: relative;
+    }
+
+    .bullet::before {
+        content: "•";
+        position: absolute;
+        left: 5px;
+        color: #8c268f;
+        font-size: 18px;
+    }
+
+    .notice {
+        background: #f4ead0;
+        border: 1px solid #d7c18a;
+        padding: 12px;
+        line-height: 1.5;
+    }
+
+    footer {
+        border-top: 1px solid #c9ced1;
+        background: #e6e9eb;
+        color: #59636a;
+        padding: 15px 20px;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    @media (max-width: 1050px) {
+        .layout { grid-template-columns: 1fr; }
+        header { flex-direction: column; align-items: stretch; }
+        .ad { max-width: none; }
+    }
+
+    @media (max-width: 600px) {
+        .topbar { overflow-x: auto; white-space: nowrap; }
+        .logo { font-size: 36px; }
+        .userbar { height: auto; min-height: 34px; flex-wrap: wrap; padding: 7px; }
+        .userbar .right { margin-left: 0; }
+    }
+</style>
+</head>
+
+<body>
+<div class="page">
+
+    <nav class="topbar">
+        <a href="#">Главная</a>
+        <a href="#position">Позиция</a>
+        <a href="#ideology">Идеология</a>
+        <a href="#principles">Принципы</a>
+        <a href="#about">О партии</a>
+        <a href="#server">Сервер</a>
+    </nav>
+
+    <header>
+        <div>
+            <div class="logo">pivo<span>craft</span></div>
+            <div class="tagline">Партия Любителей Пиво Крафта<br><strong>* Фан-партия</strong></div>
+        </div>
+
+        <div class="ad" id="server">
+            <div>
+                <strong>🍺 PIVO CRAFT</strong>
+                <small>Наш игровой сервер: pivo.polit.games</small>
+            </div>
+        </div>
+    </header>
+
+    <div class="userbar">
+        <strong>☰ Партия Любителей Пиво Крафта</strong>
+        <div class="right">
+            <a href="#position">Наша позиция</a> ▼
+            &nbsp;&nbsp;
+            <a href="#ideology">Идеология</a> ▼
+        </div>
+    </div>
+
+    <main class="layout">
+
+        <aside>
+            <div class="side-title">Новости партии</div>
+            <div class="side-box news">
+                <div class="news-row">
+                    <div class="date">04-Сен</div>
+                    <div>Опубликована программа партии</div>
+                </div>
+                <div class="news-row">
+                    <div class="date">04-Сен</div>
+                    <div>Наш игровой сервер открыт</div>
+                </div>
+            </div>
+
+            <div class="side-title">Наш сервер</div>
+            <div class="server-card">
+                <div class="beer">🍺</div>
+                <h2>PIVO CRAFT</h2>
+                <div>Игровой сервер · Minecraft 1.21.11</div>
+                <div class="ip">pivo.polit.games</div>
+            </div>
+
+            <div class="side-title">Разделы</div>
+            <div class="side-box">
+                <div class="bullet"><a href="#position">Позиция по войне</a></div>
+                <div class="bullet"><a href="#ideology">Либерализм</a></div>
+                <div class="bullet"><a href="#ideology">Социальный либерализм</a></div>
+                <div class="bullet"><a href="#principles">Наши принципы</a></div>
+            </div>
+        </aside>
+
+        <section>
+            <div class="news">
+                <h2>Партия Любителей Пиво Крафта</h2>
+                <div class="notice">
+                    Официальная информационная страница партии. Здесь представлены
+                    заявленные политические взгляды и основные принципы организации.
+                </div>
+            </div>
+
+            <div class="content-title" id="position">Позиция по войне</div>
+            <div class="section">
+                <h3>За прекращение огня и мирное соглашение</h3>
+                <p>
+                    Партия выступает за <strong>как можно более быстрое прекращение огня</strong>
+                    и переход к дипломатическому урегулированию конфликта.
+                </p>
+                <p>
+                    Наша позиция заключается в том, что <strong>ответственность за происходящее
+                    несут все стороны конфликта</strong>, и мы выступаем против упрощённого
+                    представления войны как истории, где существует только одна сторона,
+                    заслуживающая обвинения.
+                </p>
+                <div class="principle">
+                    <strong>Главный принцип:</strong> приоритет сохранения человеческих жизней,
+                    прекращения боевых действий и поиска политического решения.
+                </div>
+            </div>
+
+            <div class="content-title" id="ideology">Идеология</div>
+            <div class="section">
+                <h3>Социальный либерализм и либерализм</h3>
+                <p>
+                    Партия заявляет своей идеологической основой
+                    <strong>социальный либерализм и либерализм</strong>.
+                </p>
+
+                <div class="bullet">
+                    <strong>Личные свободы</strong> — уважение свободы человека и его права
+                    самостоятельно определять свою жизнь.
+                </div>
+                <div class="bullet">
+                    <strong>Равенство перед законом</strong> — одинаковые правовые принципы
+                    для всех граждан.
+                </div>
+                <div class="bullet">
+                    <strong>Свобода слова</strong> — защита возможности выражать различные
+                    мнения в рамках закона.
+                </div>
+                <div class="bullet">
+                    <strong>Социальная ответственность</strong> — сочетание рыночной экономики,
+                    гражданских свобод и механизмов социальной поддержки.
+                </div>
+            </div>
+
+            <div class="content-title" id="principles">Основные принципы</div>
+            <div class="section">
+                <h3>Наши принципы</h3>
+
+                <div class="principle">
+                    <strong>01. Мир</strong><br>
+                    Стремление к скорейшему прекращению вооружённого конфликта
+                    дипломатическими средствами.
+                </div>
+
+                <div class="principle">
+                    <strong>02. Свобода</strong><br>
+                    Уважение личных прав, свобод и автономии человека.
+                </div>
+
+                <div class="principle">
+                    <strong>03. Либерализм</strong><br>
+                    Поддержка политических и гражданских свобод, правового государства
+                    и равенства перед законом.
+                </div>
+
+                <div class="principle">
+                    <strong>04. Социальная политика</strong><br>
+                    Поддержка социальной защиты при сохранении личной и экономической свободы.
+                </div>
+            </div>
+
+            <div class="content-title" id="about">О партии</div>
+            <div class="section">
+                <h3>Партия Любителей Пиво Крафта</h3>
+                <p>
+                    Это информационный сайт организации с программными материалами,
+                    заявленными принципами и ссылкой на игровой сервер.
+                </p>
+                <p>
+                    <strong>Игровой сервер:</strong>
+                    <a href="https://pivo.polit.games">pivo.polit.games</a>
+                </p>
+            </div>
+        </section>
+
+        <aside>
+            <div class="side-title">Ключевые положения</div>
+            <div class="side-box">
+                <div class="bullet">Быстрое прекращение огня</div>
+                <div class="bullet">Дипломатическое урегулирование</div>
+                <div class="bullet">Свобода личности</div>
+                <div class="bullet">Равенство перед законом</div>
+                <div class="bullet">Социальный либерализм</div>
+            </div>
+
+            <div class="side-title">Навигация</div>
+            <div class="side-box">
+                <p><a href="#position">→ Позиция по войне</a></p>
+                <p><a href="#ideology">→ Идеология</a></p>
+                <p><a href="#principles">→ Принципы партии</a></p>
+                <p><a href="#server">→ Игровой сервер</a></p>
+            </div>
+
+            <div class="side-title">PIVO CRAFT</div>
+            <div class="side-box">
+                <p><strong>IP сервера:</strong></p>
+                <p style="font-family:Consolas,monospace; font-size:16px;">
+                    pivo.polit.games
+                </p>
+                <p>Версия: <strong>1.21.11</strong><br>Заходите по указанному адресу в Minecraft.</p>
+            </div>
+        </aside>
+
+    </main>
+
+    <div style="padding:10px 20px; font-size:12px; color:#666; border-top:1px solid #ddd;">* Фан-партия: не является официальной политической партией.</div>
+
+    <footer>
+        © 2026 Партия Любителей Пиво Крафта · Информационный сайт
+    </footer>
+</div>
+</body>
+</html>
