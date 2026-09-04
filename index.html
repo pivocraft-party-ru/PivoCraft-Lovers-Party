@@ -53,12 +53,6 @@
         align-items: flex-start;
     }
 
-    .custom-logo {
-        max-width: 240px;
-        height: auto;
-        display: block;
-    }
-
     .tagline {
         color: #666;
         font-size: 14px;
@@ -276,8 +270,18 @@
 
     <header>
         <div class="logo-container">
-            <img src="Снимок экрана 2026-09-04 213241.png" alt="ПЛПК РФ" class="custom-logo">
-            <div class="tagline"><strong>* Фан-партия</strong></div>
+            <!-- Точный SVG логотип из картинки -->
+            <svg width="290" height="55" viewBox="0 0 290 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- pivocraft текст -->
+                <text x="0" y="40" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="44" fill="#0b3c65">pivo</text>
+                <text x="98" y="40" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="44" fill="#ff7e00">craft</text>
+                <!-- ПЛПК в синем квадрате -->
+                <g transform="translate(195, 8)">
+                    <rect width="84" height="40" fill="#0b3c65"/>
+                    <text x="10" y="30" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="28" fill="#ffffff">плпк</text>
+                </g>
+            </svg>
+            <div class="tagline">Партия Любителей Пиво Крафта * <strong>Фан-партия</strong></div>
         </div>
 
         <div class="ad" id="server">
@@ -310,9 +314,7 @@
 
             <div class="side-title">Наш сервер</div>
             <div class="server-card">
-                <!-- Картинка logoserver.png вместо эмодзи пива -->
                 <img src="logoserver.png" alt="Пиво" style="max-width: 80px; height: auto; margin: 0 auto 12px; display: block;">
-                
                 <h2>PIVO CRAFT</h2>
                 <div>Игровой сервер · Minecraft 1.21.11</div>
                 <div class="ip">pivo.polit.games</div>
@@ -413,10 +415,10 @@
             <div class="section">
                 <h3>Команда партии</h3>
                 <div class="bullet">
-                    <strong>Спикер:</strong> Weruni
+                    <strong>Спикер и участник:</strong> Weruni
                 </div>
                 <div class="bullet">
-                    <strong>Участник:</strong> Qeruni
+                    <strong>СММ:</strong> Qeruni
                 </div>
             </div>
 
