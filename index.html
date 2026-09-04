@@ -47,16 +47,11 @@
         gap: 25px;
     }
 
-    .logo {
-        font-size: 48px;
-        line-height: 1;
-        font-weight: 900;
-        letter-spacing: -3px;
-        color: #2c9b45;
-        text-shadow: 2px 2px 0 #fff, 3px 3px 0 #8b5b25;
+    .logo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
-
-    .logo span { color: #b07a22; }
 
     .tagline {
         color: #666;
@@ -259,7 +254,6 @@
 
     @media (max-width: 600px) {
         .topbar { overflow-x: auto; white-space: nowrap; }
-        .logo { font-size: 36px; }
         .userbar { height: auto; min-height: 34px; flex-wrap: wrap; padding: 7px; }
         .userbar .right { margin-left: 0; }
     }
@@ -280,9 +274,18 @@
     </nav>
 
     <header>
-        <div>
-            <div class="logo">pivo<span>craft</span></div>
-            <div class="tagline">Партия Любителей Пиво Крафта<br><strong>* Фан-партия</strong></div>
+        <div class="logo-container">
+            <!-- SVG-логотип: белый фон, синяя рамка, герб и надпись ПЛПК -->
+            <svg width="240" height="110" viewBox="0 0 300 135" xmlns="http://www.w3.org/2000/svg">
+              <rect width="300" height="135" fill="#FFFFFF"/>
+              <!-- Синяя рамка (стиль ЛДПР, но белая середина) -->
+              <rect x="6" y="6" width="288" height="123" fill="none" stroke="#0040aa" stroke-width="8"/>
+              <!-- Текст ПЛПК -->
+              <text x="150" y="55" font-family="'Impact', 'Arial Black', sans-serif" font-size="52" font-weight="900" fill="#0040aa" text-anchor="middle" letter-spacing="3">ПЛПК</text>
+              <text x="150" y="85" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#333333" text-anchor="middle">ПАРТИЯ ЛЮБИТЕЛЕЙ ПИВО КРАФТА</text>
+              <text x="150" y="108" font-family="Arial, sans-serif" font-size="11" fill="#666666" text-anchor="middle">СОЮЗ ЕДИНОМЫШЛЕННИКОВ · 2026</text>
+            </svg>
+            <div class="tagline"><strong>* Фан-партия</strong></div>
         </div>
 
         <div class="ad" id="server">
